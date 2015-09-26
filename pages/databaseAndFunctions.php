@@ -4,6 +4,7 @@
  * Date: 30-07-2015
  * Time: 13:52
  */
+
 $DB = mysqli_connect("localhost", "trydevsi_partner", "part@123", "trydevsi_myschool");
 if (mysqli_connect_errno()) {
     echo "Failed to DB to MySQL: " . mysqli_connect_error();
@@ -11,6 +12,10 @@ if (mysqli_connect_errno()) {
 // Variables and values
 $domain = "http://myschool.askyourfriend.in/";
 $salt = "fidhbfn9J((jPCinISNOkinknvapin0f9fnoXVnVP0EINFqnalcap0mc-MC0MSPD0qej";
+
+session_start();
+
+$isLoggedIn = isset($_SESSION['sessionID']);
 
 // Normal Implode without php 5.5 discrepancy
 function myImplode($glue, $array)
@@ -27,8 +32,12 @@ function myImplode($glue, $array)
     }
 }
 
-// GCM sender
+// Date format
+date_default_timezone_set("Asia/Kolkata");
+$time = date("Y-m-d , H:i:s");
 
+
+// GCM sender
 //Sending Push Notification
 function send_push_notification($registatoin_ids, $message, $topic)
 {
