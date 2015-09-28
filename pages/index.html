@@ -33,23 +33,27 @@
     <link rel="apple-touch-icon-precomposed" href="form-1/assets/ico/apple-touch-icon-57-precomposed.png">
 
     <!-- Java Script for async checking signup -->
+    <script src="js/ajax.js"></script>
     <script>
         function ajax_get_json() {
-            var button_signup = document.getElementById("button_signup");
-            var hr = new XMLHttpRequest();
-            window.location.href = "index.php"
-            hr.open("POST", "signup.json", true);
-            hr.setRequestHeader("Content-type", "application/json", true);
+            var button_login = document.getElementById("button_signup");
+            var institution = document.getElementById("form-email");
+            var password = document.getElementById("form-password");
+            var hr = ajaxObj("POST", "login.php");
             hr.onreadystatechange = function () {
-                if (hr.readyState == 4 && hr.status == 200) {
+                if (ajaxReturn(hr) == true) {
                     var data = JSON.parse(hr.responseText);
-                    if (data.result === "success") {
-                        button_signup.innerHTML = "Signed up...";
+                    if (data.result == "success") {
+
+                        var myWindow = window.open("index.php", "_self");
+                    }
+                    else {
+                        button_login.innerHTML = "Get me in...!";
                     }
                 }
             }
-            hr.send(null);
-            button_signup.innerHTML = "Signing up....";
+            hr.send("institution=" + institution.value + "&password=" + password.value);
+            button_login.innerHTML = "wait......";
         }
         function change_to_register() {
             var container = document.getElementsByName()
@@ -131,7 +135,7 @@
                         <!-- Coomented -->
                     </div>
                     <div class="form-bottom">
-                        <form role="form" class="registration-form" action="login.php" method="post">
+                        <form role="form" class="registration-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-email">Email</label>
                                 <input type="text" name="institution" placeholder="Email..."
@@ -143,7 +147,9 @@
                                 <input type="password" name="password" placeholder="Password..."
                                        class="form-first-name form-control" id="form-password">
                             </div>
-                            <button type="submit" class="btn" id="button_signup">Get me in...!</button>
+                            <button type="submit" class="btn" id="button_signup" onclick="ajax_get_json();">Get me
+                                in...!
+                            </button>
                         </form>
                     </div>
                 </div>
