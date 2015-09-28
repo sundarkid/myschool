@@ -2,6 +2,7 @@
 
 require_once "databaseAndFunctions.php";
 
+
 if ($isLoggedIn) {
     $posts = array();
     $sql = "SELECT * FROM `posts` ORDER BY `posts`.`pid` DESC LIMIT 0, 30 ";
@@ -20,5 +21,7 @@ if ($isLoggedIn) {
     echo json_encode(array('result' => "failure", 'reason' => "User not logged in."));
 }
 
+
+$DB->close();
 
 ?>

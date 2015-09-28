@@ -56,7 +56,10 @@ function work($file_name, $connect)
         }
     } else {
         echo "<br>Error";
+        //echo json_encode(array('result' => "failure", 'reason' => "cannot insert data into table"));
     }
 }
+
+$DB->close();
 
 ?>

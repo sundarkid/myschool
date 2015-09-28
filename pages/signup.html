@@ -29,6 +29,26 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
+    <!-- Java Script for async checking signup -->
+    <script>
+        function ajax_get_json() {
+            var button_signup = document.getElementById("button_signup");
+            var hr = new XMLHttpRequest();
+            hr.open("POST", "signup.json", true);
+            hr.setRequestHeader("Content-type", "application/json", true);
+            hr.onreadystatechange = function () {
+                if (hr.readyState == 4 && hr.status == 200) {
+                    var data = JSON.parse(hr.responseText);
+                    if (data.result === "success") {
+                        button_signup.innerHTML = "Signed up...";
+                    }
+                }
+            }
+            hr.send(null);
+            button_signup.innerHTML = "Signing up....";
+        }
+    </script>
+
 </head>
 
 <body>
@@ -153,7 +173,7 @@
                                                   class="form-about-yourself form-control"
                                                   id="form-about-yourself"></textarea>
                             </div>
-                            <button type="submit" class="btn">Sign me up!</button>
+                            <button type="submit" class="button_signup">Sign me up!</button>
                         </form>
                     </div>
                 </div>

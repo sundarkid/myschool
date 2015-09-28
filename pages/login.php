@@ -15,22 +15,27 @@ else {
 
     $password = md5($password . $salt);
 
-    $sql = "Select `uname`, `user_id`, `email` from `user_details` where `email` = '$email' AND `password` = '$password'";
+    $sql = "Select `uname`, `uid`, `mail_id` from `user_details` where `mail_id` = '$email' AND `password` = '$password'";
 
     $result = $DB->query($sql);
 
     if ($result) {
         $row = mysqli_fetch_array($result);
-        if ($row['email'] === $email) {
-            session_start();
-            $_SESSION['userId'] = $row['user_id'];
-            $_SESSION['userName'] = $row['uname'];
-            $_SESSION['sessionID'] = md5($row['uname']);
-            echo json_encode(array('result' => "success", 'name' => $row['uname']));
+        if ($row != null) {
+            if ($row['mail_id'] === $email) {
+                session_start();
+                $_SESSION['userId'] = $row['uid'];
+                $_SESSION['userName'] = $row['uname'];
+                $_SESSION['sessionID'] = md5($row['uname']);
+                echo json_encode(array('result' => "success", 'name' => $row['uname'], 'id' => $row['uid']));
+            }
+        } else {
+            echo json_encode(array('result' => "failure", 'reason' => "No user match found"));
         }
     } else {
         echo json_encode(array('result' => "failure", 'reason' => "No user match found"));
     }
 
+    $DB->close();
 }
 ?>
