@@ -44,6 +44,8 @@ foreach ($data as $key => $value) {
     }
 }
 
+echo json_encode($data);
+
 if ($validater) {
 
     $sql = "INSERT INTO `user_details` (`uname`, `mail_id`, `address_no`, `area`, `city`, `pincode`, `password`, `date`)

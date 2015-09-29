@@ -12,3 +12,7 @@ function ajaxReturn(x) {
         return true;
     }
 }
+
+function _(v) {
+    return document.getElementById(v);
+}

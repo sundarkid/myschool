@@ -30,21 +30,30 @@
     <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
 
     <!-- Java Script for async checking signup -->
+    <script src="js/ajax.js"></script>
     <script>
         function ajax_get_json() {
             var button_signup = document.getElementById("button_signup");
-            var hr = new XMLHttpRequest();
-            hr.open("POST", "signup.json", true);
-            hr.setRequestHeader("Content-type", "application/json", true);
+            var name = _("form-name");
+            var email = _("form-email");
+            var address = _("form-address");
+            var area = _("form-area");
+            var city = _("form-city");
+            var pincode = _("form-pincode");
+            var about = _("form-about");
+            var password = _("form-password");
+            var hr = ajaxObj("POST", "signup.php");
             hr.onreadystatechange = function () {
-                if (hr.readyState == 4 && hr.status == 200) {
+                if (ajaxReturn(hr) == true) {
+                    alert(hr.responseText);
                     var data = JSON.parse(hr.responseText);
-                    if (data.result === "success") {
+                    if (data.result == "success") {
                         button_signup.innerHTML = "Signed up...";
+                        var NewWindow = window.open("login.html", "_self");
                     }
                 }
             }
-            hr.send(null);
+            hr.send("name=" + name.value + "&password=" + password.value + "&email" + email.value + "&address=" + address.value + "&area=" + area.value + "&city=" + city.value + "&pincode=" + pincode.value + "&about=" + about.value);
             button_signup.innerHTML = "Signing up....";
         }
     </script>
@@ -128,11 +137,11 @@
                         <!-- Coomented -->
                     </div>
                     <div class="form-bottom">
-                        <form role="form" action="signup.php" method="post" class="registration-form">
+                        <form role="form" class="registration-form">
                             <div class="form-group">
                                 <label class="sr-only" for="form-first-name">Institution Name...</label>
                                 <input type="text" name="name" placeholder="Institution name..."
-                                       class="form-first-name form-control" id="form-first-name">
+                                       class="form-first-name form-control" id="form-name">
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-email">Email</label>
@@ -169,11 +178,11 @@
                             </div>
                             <div class="form-group">
                                 <label class="sr-only" for="form-about-yourself">About your school...</label>
-			                        	<textarea name="`about" placeholder="About yourself..."
+			                        	<textarea name="about" placeholder="About yourself..."
                                                   class="form-about-yourself form-control"
-                                                  id="form-about-yourself"></textarea>
+                                                  id="form-about"></textarea>
                             </div>
-                            <button type="submit" class="button_signup">Sign me up!</button>
+                            <button type="submit" class="button-signup" onclick="ajax_get_json();">Sign me up!</button>
                         </form>
                     </div>
                 </div>
