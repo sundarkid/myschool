@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap Registration Form Template</title>
+    <title>My School Registration</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
@@ -45,7 +45,6 @@
             var hr = ajaxObj("POST", "signup.php");
             hr.onreadystatechange = function () {
                 if (ajaxReturn(hr) == true) {
-                    alert(hr.responseText);
                     var data = JSON.parse(hr.responseText);
                     if (data.result == "success") {
                         button_signup.innerHTML = "Signed up...";
@@ -53,7 +52,7 @@
                     }
                 }
             }
-            hr.send("name=" + name.value + "&password=" + password.value + "&email" + email.value + "&address=" + address.value + "&area=" + area.value + "&city=" + city.value + "&pincode=" + pincode.value + "&about=" + about.value);
+            hr.send("name=" + name.value + "&password=" + password.value + "&email=" + email.value + "&address=" + address.value + "&area=" + area.value + "&city=" + city.value + "&pincode=" + pincode.value + "&about=" + about.value);
             button_signup.innerHTML = "Signing up....";
         }
     </script>
@@ -137,7 +136,7 @@
                         <!-- Coomented -->
                     </div>
                     <div class="form-bottom">
-                        <form role="form" class="registration-form">
+                        <form role="form" class="registration-form" action="signup.php" method="post">
                             <div class="form-group">
                                 <label class="sr-only" for="form-first-name">Institution Name...</label>
                                 <input type="text" name="name" placeholder="Institution name..."
@@ -182,7 +181,7 @@
                                                   class="form-about-yourself form-control"
                                                   id="form-about"></textarea>
                             </div>
-                            <button type="submit" class="button-signup" onclick="ajax_get_json();">Sign me up!</button>
+                            <button type="submit" class="button-signup" >Sign me up!</button>
                         </form>
                     </div>
                 </div>
