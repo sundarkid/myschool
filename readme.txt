@@ -1,3 +1,3 @@
-Thank you for downloading this Bootstrap theme. This theme was downloaded from UseBotstrap.com
+This is a project for mass communication between parents and school.
 
-If you need more themes, visit our website: http://usebootstrap.com/
+This system comprises of an app on the parents side that will help them to get information about school, and a website for schools to send data to parents. 
