@@ -5,6 +5,7 @@
  * Time: 13:52
  */
 
+/*------------ Database Connection ------------*/
 $DB = mysqli_connect("localhost", "trydevsi_partner", "part@123", "trydevsi_myschool");
 if (mysqli_connect_errno()) {
     echo "Failed to DB to MySQL: " . mysqli_connect_error();
@@ -85,38 +86,4 @@ function send_push_notification($registatoin_ids, $message, $topic)
     return $result;
 }
 
-?>
-
-<?php
-/**
- * Created by PhpStorm.
- * User: sundareswaran
- * Date: 10/30/15
- * Time: 11:56 PM
- */
-
-
-
-
-/*
-for($i = 0; $i < 10; $i++){
-    echo <<< tag
-<div class="panel panel-default">
-                                    <div class="panel-thumbnail" align="center"><img src="assets/img/bg_5.jpg" class="img-responsive">
-                                    </div>
-                                    <div class="panel-body">
-                                        <p class="lead">Urbanization</p>
-                                        <p>orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                                        <p>45 Followers, 13 Posts</p>
-
-                                        <p>
-                                            <img src="assets/img/uFp_tsTJboUY7kue5XAsGAs28.png" height="28px"
-                                                 width="28px">
-                                        </p>
-                                    </div>
-                                </div>
-tag;
-
-}
-*/
 ?>

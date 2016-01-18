@@ -28,6 +28,9 @@ if (isset($_POST['token'])) {
             //var_dump($messages);
             //echo "<br>".json_encode($messages);
         }
+    }else{
+        echo json_encode(array('result' => "failure", "message" => "Failed to register token."));
+        exit();
     }
     $sql = "SELECT * FROM `posts` ORDER BY `posts`.`pid` DESC LIMIT 0, 30 ";
     $postResult = mysqli_query($DB, $sql);

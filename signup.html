@@ -32,6 +32,7 @@
     <!-- Java Script for async checking signup -->
     <script src="js/ajax.js"></script>
     <script>
+        /*
         function ajax_get_json() {
             var button_signup = document.getElementById("button_signup");
             var name = _("form-name");
@@ -55,6 +56,7 @@
             hr.send("name=" + name.value + "&password=" + password.value + "&email=" + email.value + "&address=" + address.value + "&area=" + area.value + "&city=" + city.value + "&pincode=" + pincode.value + "&about=" + about.value);
             button_signup.innerHTML = "Signing up....";
         }
+        */
     </script>
 
 </head>
@@ -71,7 +73,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="pages/index.html">My School</a>
+            <a class="navbar-brand" href="index.html">My School</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="top-navbar-1">
@@ -115,7 +117,7 @@
                         </p>
                     </div>
                     <div class="top-big-link">
-                        <a class="btn btn-link-1" href="pages/index.html"><strong>Login...</strong></a>
+                        <a class="btn btn-link-1" href="index.html"><strong>Login...</strong></a>
                     </div>
                     <!-- Commented by Sundar
                         <a class="btn btn-link-2" href="#">Button 2</a>
@@ -136,7 +138,7 @@
                         <!-- Coomented -->
                     </div>
                     <div class="form-bottom">
-                        <form role="form" class="registration-form" onsubmit="ajax_get_json();">
+                        <form role="form" class="registration-form" action="pages/signup.php" method="post">
                             <div class="form-group">
                                 <label class="sr-only" for="form-first-name">Institution Name...</label>
                                 <input type="text" name="name" placeholder="Institution name..."

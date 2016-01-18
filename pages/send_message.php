@@ -1,6 +1,6 @@
 <?php
 
-require "databaseAndFunctions.php";
+require "Class/databaseAndFunctions.php";
 
 date_default_timezone_set("Asia/Kolkata");
 
@@ -20,7 +20,7 @@ if (isset($_POST['message']) && isset($_POST['title']) && isset($_POST['name']))
             work($file_name, $DB);
 
         } else {
-            echo json_encode(array('result' => "failure", 'response' => "Some details missing"));
+            echo json_encode(array('result' => "failure", 'response' => "Invalid file format"));
         }
     } else {
         work("", $DB);

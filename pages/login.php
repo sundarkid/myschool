@@ -5,7 +5,7 @@ if (!isset($_POST['institution']) || $_POST['institution'] === "" || $_POST['pas
     echo json_encode(array('result' => "failure", 'reason' => "Some inputs are missing"));
 else {
 
-    require "databaseAndFunctions.php";
+    require "Class/databaseAndFunctions.php";
 
     $email = stripcslashes($_POST['institution']);
     $password = stripcslashes($_POST['password']);
@@ -27,13 +27,19 @@ else {
                 $_SESSION['userId'] = $row['uid'];
                 $_SESSION['userName'] = $row['uname'];
                 $_SESSION['sessionID'] = md5($row['uname']);
-                echo json_encode(array('result' => "success", 'name' => $row['uname'], 'id' => $row['uid']));
+                //echo json_encode(array('result' => "success", 'name' => $row['uname'], 'id' => $row['uid']));
+                header("Location: ./posts.php");
+                die();
             }
         } else {
-            echo json_encode(array('result' => "failure", 'reason' => "No user match found"));
+            //echo json_encode(array('result' => "failure", 'reason' => "No user match found"));
+            header("Location: ../index.html");
+            die();
         }
     } else {
-        echo json_encode(array('result' => "failure", 'reason' => "No user match found"));
+        //echo json_encode(array('result' => "failure", 'reason' => "No user match found"));
+        header("Location: ../index.html");
+        die();
     }
 
     $DB->close();

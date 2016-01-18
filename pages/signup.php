@@ -44,7 +44,7 @@ foreach ($data as $key => $value) {
     }
 }
 
-e//cho json_encode($data);
+echo json_encode($data);
 
 if ($validater) {
 
@@ -59,9 +59,10 @@ if ($validater) {
     $token = myImplode("", $token);
 
     $iid = $DB->insert_id;
-//    echo "<br>" . $iid;
+    echo "<br>" . $iid;
     $sql1 = "INSERT INTO `sub_tokens` (`token`, `uid`, `date`) VALUES ('$token', '$iid', '$time')";
-//    $result1 = $DB->query($sql1);
+    echo "<br>" . $sql1;
+    $result1 = $DB->query($sql1);
     if ($result && $result1) {
         echo json_encode(array('result' => "success"));
     } else {
