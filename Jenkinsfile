@@ -9,10 +9,7 @@ pipeline {
 
     stage('stage 2') {
       steps {
-        node(label: 'Node') {
-          sh 'uname -a'
-        }
-
+        sh 'uname -a'
       }
     }
 
