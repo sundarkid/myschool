@@ -11,13 +11,15 @@ pipeline {
 
         stage('OCI') {
           steps {
-            build 'ansible-runner'
+            sh 'echo "OCI scripts"'
           }
         }
 
         stage('SSH') {
           steps {
-            sh '''ssh host <<<EOF
+            sh '''ssh host 
+
+<<<EOF
 
 Command EOF'''
           }
