@@ -5,7 +5,7 @@ pipeline {
       parallel {
         stage('LS') {
           steps {
-            sh 'ls -alrt'
+            sh 'ls -alrt; tree .;'
           }
         }
 
