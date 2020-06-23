@@ -2,8 +2,27 @@ pipeline {
   agent any
   stages {
     stage('stage 1') {
-      steps {
-        sh 'ls -alrt'
+      parallel {
+        stage('LS') {
+          steps {
+            sh 'ls -alrt'
+          }
+        }
+
+        stage('OCI') {
+          steps {
+            build 'ansible-runner'
+          }
+        }
+
+        stage('SSH') {
+          steps {
+            sh '''ssh host <<<EOF
+
+Command EOF'''
+          }
+        }
+
       }
     }
 
